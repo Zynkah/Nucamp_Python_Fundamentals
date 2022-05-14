@@ -1,0 +1,53 @@
+import random
+
+high_score = 0
+roll_dice = "Roll Dice"
+leave_game = "Leave Game"
+
+
+def dice_game():
+    global high_score
+    while True:
+        while True:
+            print("Current High Score: ", high_score)
+            print("1. " + roll_dice)
+            print("2. " + leave_game)
+            choice = input("Enter your choice: ").lower()
+            if choice == "1" or choice == "roll dice":
+                play = roll_dice
+                break
+            if choice == "2" or choice == "leave game":
+                play = leave_game
+                break
+            print("Unknown entry!")
+        while True:
+            if choice == "1" or choice == "roll dice":
+                roll_a = random.randint(1, 6)
+                print("You roll a...", roll_a)
+                roll_b = random.randint(1, 6)
+                print("You roll a...", roll_b)
+                print("")
+                print("You have rolled a total of: ", roll_a + roll_b)
+                current_high_score = roll_a + roll_b
+            if current_high_score > high_score:
+                high_score = current_high_score
+                print("")
+                print("New high score!")
+                print("")
+                print("Current High Score: ", current_high_score)
+                print("")
+                break
+            if current_high_score < high_score:
+                high_score = high_score
+                print("")
+                print("Try Again!")
+                print("")
+                break
+            if choice == "2" or choice == "leave game":
+                print("")
+                print("Goodbye!")
+                print("")
+                break
+
+
+dice_game()
