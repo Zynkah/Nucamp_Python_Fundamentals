@@ -1,0 +1,98 @@
+wizard = "Wizard"
+wizard_hp = 70
+wizard_damage = 150
+
+elf = "Elf"
+elf_hp = 100
+elf_damage = 100
+
+human = "Human"
+human_hp = 150
+human_damage = 20
+
+orc = "Orc"
+orc_hp = 180
+orc_damage = 120
+
+dragon = "Dragon"
+dragon_hp = 300
+dragon_damage = 50
+
+dictionary_wizard = {"name": "Wizard", "hp": 70, "damage": 150}
+dictionary_elf = {"name": "Elf", "hp": 100, "damage": 100}
+dictionary_human = {"name": "Human", "hp": 150, "damage": 20}
+dictionary_orc = {"name": "Orc", "hp": 180, "damage": 120}
+dictionary_dragon = {"name": "Dragon", "hp": 300, "damage": 50}
+
+
+while True:
+    while True:
+        print("1. " + wizard)
+        print("2. " + elf)
+        print("3. " + human)
+        print("4. " + orc)
+
+        choice = input("Choose your character: ").lower()
+
+        if choice == "1" or choice == "wizard":
+            character = wizard
+            my_damage = wizard_damage
+            my_hp = wizard_hp
+            break
+
+        if choice == "2" or choice == "elf":
+            character = elf
+            my_damage = elf_damage
+            my_hp = elf_hp
+            break
+
+        if choice == "3" or choice == "human":
+            character = human
+            my_damage = human_damage
+            my_hp = human_hp
+            break
+
+        if choice == "4" or choice == "orc":
+            character = orc
+            my_damage = orc_damage
+            my_hp = orc_hp
+            break
+
+        print("Unknown Character")
+
+    print("You have chosen the", character)
+    print("My HP is:", my_hp)
+    print("My damage is:", my_damage)
+
+    while True:
+        dragon_hp = dragon_hp - my_damage
+        print("The", character, "damaged the Dragon!")
+        print("The Dragon's hitpoint are now:", str(dragon_hp))
+        print("")
+        if dragon_hp > 0:
+            my_hp = my_hp - dragon_damage
+            print("The Dragon striked back at", character + "!")
+            print("The", character, "hitpoints are now:", str(my_hp))
+            print("")
+        if my_hp <= 0:
+            print("The", character, "has lost the battle.")
+            print("")
+            break
+        if dragon_hp <= 0:
+            print("The Dragon has lost the battle.")
+            print("")
+            break
+
+
+# code for replay the game
+    replay = input("Play again?").lower()
+
+    if replay == "yes" or replay == "y":
+        dragon_hp = 300
+        continue
+    if replay == "no" or replay == "n":
+        print("")
+        print("Goodbye")
+        break
+    else:
+        break
