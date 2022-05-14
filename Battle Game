@@ -18,13 +18,6 @@ dragon = "Dragon"
 dragon_hp = 300
 dragon_damage = 50
 
-dictionary_wizard = {"name": "Wizard", "hp": 70, "damage": 150}
-dictionary_elf = {"name": "Elf", "hp": 100, "damage": 100}
-dictionary_human = {"name": "Human", "hp": 150, "damage": 20}
-dictionary_orc = {"name": "Orc", "hp": 180, "damage": 120}
-dictionary_dragon = {"name": "Dragon", "hp": 300, "damage": 50}
-
-
 while True:
     while True:
         print("1. " + wizard)
