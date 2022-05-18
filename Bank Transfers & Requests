@@ -1,0 +1,75 @@
+class User:
+    def __init__(self, name, pin, password):
+        self.name = name
+        self.pin = pin
+        self.password = password
+
+    def change_name(self, name):
+        self.name = name
+        print("Your name has been changed:", self.name)
+
+    def change_pin(self, pin):
+        self.pin = pin
+        print("Your pin has been changed:", self.pin)
+
+    def change_password(self, password):
+        self.password = password
+        print("Your passowrd has been changed to", self.password)
+
+class BankUser(User):
+    def __init__(self, name, pin, password):
+        super().__init__(name, pin, password)
+        self.balance = 0
+
+    def show_balance(self):
+        print(self.name, "has an account balance of:", self.balance)
+
+    def deposit(self, amount):
+        self.balance += amount
+
+    def withdraw(self, amount):
+        self.balance -= amount
+
+    def transfer_money(self, user, amount):
+        print("\nYou are transferring $" + str(amount), "to", user.name, "\nAuthentication required")
+        pin = input("Enter your PIN: ")
+        if pin == self.pin:
+            self.balance -= amount
+            user.balance += amount
+        else:
+            print("Invalid PIN, Transaction canceled!")
+            return False
+        print("Transfer authorized\nTransferring $" + str(amount), "to", user.name)
+
+    def request_money(self, user, amount):
+        print("\nYou are requesting $" + str(amount), "from", user.name, "\nUser authentication is required...")
+        pin = input(f"Enter {user.name}\'s PIN: ")
+        password = input("Enter your password: ")
+        if pin == user.pin and password == self.password:
+            self.balance += amount
+            user.balance -= amount
+        elif pin != self.pin:
+            print("Invalid PIN, Transaction canceled!\n")
+            return False
+        elif password != self.password:
+            print("Invalid Password, Transaction canceled!\n")
+            return False
+        print("Request authorized")
+        print(user.name, "sent $" + str(amount))
+
+
+Alice = BankUser("Alice", "5678", "alicepassword")
+Alice.deposit(5000)
+Alice.show_balance()
+
+Bob = BankUser("Bob", "1234", "password")
+Bob.deposit(0)
+Bob.show_balance()
+
+Alice.transfer_money(Bob, 500)
+Alice.show_balance()
+Bob.show_balance()
+
+Alice.request_money(Bob, 250)
+Alice.show_balance()
+Bob.show_balance()
