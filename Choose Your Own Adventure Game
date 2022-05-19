@@ -1,7 +1,4 @@
 # Characters
-from pdb import Restart
-
-
 kiri = "Kiri"
 kiri_hp = 140
 kiri_damage = 60
