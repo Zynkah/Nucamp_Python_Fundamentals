@@ -55,10 +55,10 @@ broken_tree = "broken tree"
 boulder = "boulder"
 
 # Trap
-pit = "into pit of spikes"
-den = "into den of snakes"
-quicksand = "in quicksand"
-cliff = "off cliff"
+pit = "a into pit of spikes"
+den = "a into den of snakes"
+quicksand = "into quicksand"
+cliff = "off a cliff"
 
 # Monument
 totem = "totem pole"
