@@ -1,0 +1,84 @@
+import random 
+
+def guess_random_number(tries, start, stop):
+    tries= int(tries)
+    start = int(start)
+    stop = int(stop)
+    random_number = int(random.randint(start, stop))
+
+    while True:   
+        if tries > 0 :
+            print(f"You have {tries} left")
+            tries -= 1 
+        else:
+            print(f"You have failed to guess the number: {random_number}")
+            break
+
+        guess = int(input("Guess a number between 0 and 10: "))
+
+        if guess > 10:
+            print("Please enter a number between 0 and 10!")
+        elif guess == random_number:
+            print("You guessed the correct number!")
+            break
+        elif guess <= random_number:
+            print("Guess higher!")
+        elif guess >= random_number:
+            print("Guess lower!")
+        else:
+            print("Try again!")
+      
+
+def guess_random_num_linear(tries, start, stop):
+    tries= int(tries)
+    start = int(start)
+    stop = int(stop)
+    random_number = int(random.randint(start, stop))
+
+    print(f"The number for the program to guess is: {random_number}")
+
+    for x in range(start, stop + 1):
+        if tries > 0 :
+            print(f"You have {tries} left")
+            tries -= 1 
+        else:
+            print("The program has failed to guess the correct number.")
+            break
+        if x == random_number:
+            print("The program has guessed correct number!")
+            break
+        elif x != random_number:
+            print(f"The program is guessing... {x}")
+
+def guess_random_num_binary(tries, start, stop):
+    random_number = random.randint(start, stop)
+    print(f"Random number to find: {random_number}")
+    lower_bound = start
+    upper_bound = stop
+
+    while tries:
+        pivot =(lower_bound + upper_bound) // 2
+        if pivot == random_number:
+            print(f"Found it! {random_number}")
+            return True
+        if pivot > random_number:
+            print("Guessing lower!")
+            upper_bound = pivot -1
+        else:
+            print("Guessing higher!")
+            lower_bound = pivot +1
+        tries -= 1
+    print("Your program failed to find the number.")
+    return False
+
+
+            
+ 
+'''Test Driver 1
+guess_random_number(5, 0, 10)'''
+
+'''Test Driver 2
+guess_random_num_linear(5, 0, 10)'''
+
+''''Test Driver 3
+guess_random_num_binary(5, 0, 100)'''
